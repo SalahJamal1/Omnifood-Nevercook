@@ -1,17 +1,20 @@
-import { StrictMode } from "react";
+import { lazy, StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import "./responsive.css";
-import App from "./App.tsx";
+const App = lazy(() => import("./App.tsx"));
 import { BrowserRouter } from "react-router-dom";
 import IsVisible from "./context/IsVisible.tsx";
+import Spinner from "./components/Spinner.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <IsVisible>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </IsVisible>
+    <Suspense fallback={<Spinner />}>
+      <IsVisible>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </IsVisible>
+    </Suspense>
   </StrictMode>
 );

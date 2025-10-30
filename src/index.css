@@ -722,3 +722,28 @@ section {
 .close {
   display: none;
 }
+
+.loader {
+  position: fixed;
+  height: 100%;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  transition: all ease-in-out 0.3s;
+  animation: loader infinite ease-in-out 1s;
+}
+.loader img {
+  height: 3rem;
+}
+@keyframes loader {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.4);
+  }
+}

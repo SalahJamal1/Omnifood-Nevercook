@@ -10,7 +10,7 @@ import TryForFree from "./components/TryForFree";
 
 export default function App() {
   return (
-    <div>
+    <>
       <Header />
       <main>
         <Hero />
@@ -22,6 +22,6 @@ export default function App() {
         <TryForFree />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
