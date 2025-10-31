@@ -8,7 +8,7 @@ import useHeader from "../hooks/useHeader";
 export default function Header() {
   const ref = useRef<HTMLElement>(null);
   const navRef = useRef<HTMLElement>(null);
-  const { show, setShow } = useHeader(ref.current!, navRef.current!);
+  const { show, setShow } = useHeader(ref, navRef);
   const onClick = (): void => {
     setShow(!show);
     toggleModel(ref.current!);

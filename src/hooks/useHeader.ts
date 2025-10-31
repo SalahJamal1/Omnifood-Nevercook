@@ -1,9 +1,15 @@
-import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
+import {
+  useEffect,
+  useState,
+  type Dispatch,
+  type RefObject,
+  type SetStateAction,
+} from "react";
 import { closeModel } from "../utils/helper";
 
 export default function useHeader(
-  ref: HTMLElement,
-  navRef: HTMLElement
+  ref: RefObject<HTMLElement | null>,
+  navRef: RefObject<HTMLElement | null>
 ): {
   show: boolean;
   setShow: Dispatch<SetStateAction<boolean>>;
@@ -15,7 +21,7 @@ export default function useHeader(
     const eventListener = (e: KeyboardEvent) => {
       if (e.code === "Escape") {
         setShow(false);
-        closeModel(navRef);
+        closeModel(navRef.current!);
       }
     };
     document.querySelector("body")?.addEventListener("keydown", eventListener);
@@ -32,9 +38,9 @@ export default function useHeader(
     if (!hero) return;
 
     const funObserver = ([e]: IntersectionObserverEntry[]): void => {
-      if (!ref) return;
-      if (e.isIntersecting) ref.classList.remove("sticky");
-      else ref.classList.add("sticky");
+      if (!ref.current) return;
+      if (e.isIntersecting) ref.current?.classList.remove("sticky");
+      else ref.current?.classList.add("sticky");
     };
     const heroObserver = new IntersectionObserver(funObserver, {
       threshold: 0.1,
