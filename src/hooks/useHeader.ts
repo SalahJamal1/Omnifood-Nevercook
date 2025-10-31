@@ -19,16 +19,14 @@ export default function useHeader(
   // Header Keyboard Event
   useEffect(() => {
     const eventListener = (e: KeyboardEvent) => {
-      if (e.code === "Escape") {
+      if (e.code === "Escape" && navRef.current) {
         setShow(false);
-        closeModel(navRef.current!);
+        closeModel(navRef.current);
       }
     };
-    document.querySelector("body")?.addEventListener("keydown", eventListener);
+    window.addEventListener("keydown", eventListener);
     return () => {
-      document
-        .querySelector("body")
-        ?.removeEventListener("keydown", eventListener);
+      window.removeEventListener("keydown", eventListener);
     };
   }, [navRef]);
 
