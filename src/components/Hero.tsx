@@ -40,7 +40,11 @@ export default function Hero() {
             </div>
           </div>
           <div className="hero-img-box">
-            <img src="/hero.png" alt="hero" className="hero-img" />
+            <img
+              src="/gallery/gallery-12.jpg"
+              alt="hero"
+              className="hero-img"
+            />
           </div>
         </div>
       </div>

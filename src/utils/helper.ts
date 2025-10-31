@@ -64,7 +64,7 @@ export const testimonials: { description: string; name: string }[] = [
   {
     description:
       "I got Omnifood for the whole family, and it frees up so much time! Plus, everything is organic and vegan and without plastic.",
-    name: "hannah",
+    name: "john",
   },
   {
     description:
