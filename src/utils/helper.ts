@@ -1,3 +1,11 @@
+export const toggleModel = (ref: HTMLElement): void => {
+  ref?.classList.toggle("nav_mobile");
+};
+
+export const closeModel = (ref: HTMLElement): void => {
+  ref?.classList.remove("nav_mobile");
+};
+
 export const links: { to: string; text: string }[] = [
   { to: "#how-it-works", text: "How it works" },
   { to: "#meals", text: "Meals" },
