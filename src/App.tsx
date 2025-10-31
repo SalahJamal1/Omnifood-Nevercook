@@ -22,6 +22,7 @@ export default function App() {
         <TryForFree />
       </main>
       <Footer />
+      <div className="overlay hidden"></div>
     </>
   );
 }

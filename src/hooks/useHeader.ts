@@ -9,7 +9,8 @@ import { closeModel } from "../utils/helper";
 
 export default function useHeader(
   ref: RefObject<HTMLElement | null>,
-  navRef: RefObject<HTMLElement | null>
+  navRef: RefObject<HTMLElement | null>,
+  overlay: HTMLElement | null
 ): {
   show: boolean;
   setShow: Dispatch<SetStateAction<boolean>>;
@@ -19,22 +20,23 @@ export default function useHeader(
   // Header Keyboard Event
   useEffect(() => {
     const eventListener = (e: KeyboardEvent) => {
-      if (e.code === "Escape" && navRef.current) {
+      if (e.code === "Escape" && navRef.current && overlay) {
         setShow(false);
-        closeModel(navRef.current);
+        closeModel(navRef.current, overlay);
       }
     };
     window?.addEventListener("keydown", eventListener);
     return () => {
       window?.removeEventListener("keydown", eventListener);
     };
-  }, [navRef]);
+  }, [navRef, overlay]);
 
   // Sticky Event
   useEffect(() => {
     const hero = document.querySelector(".hero-section") as HTMLElement;
-    if (!hero) return;
 
+    if (!hero) return;
+    if (show) return;
     const funObserver = ([e]: IntersectionObserverEntry[]): void => {
       if (!ref.current) return;
       if (e.isIntersecting) ref.current?.classList.remove("sticky");
@@ -46,8 +48,8 @@ export default function useHeader(
     });
     heroObserver.observe(hero);
     return () => {
-      heroObserver.unobserve(hero);
+      heroObserver.disconnect();
     };
-  }, [ref]);
+  }, [ref, show]);
   return { show, setShow };
 }

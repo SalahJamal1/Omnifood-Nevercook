@@ -720,7 +720,10 @@ section {
   display: none;
 }
 .close {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  color: #222;
+  transition: all ease-in-out opacity 1s;
 }
 
 .loader {
@@ -746,4 +749,21 @@ section {
   100% {
     transform: scale(1.4);
   }
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  opacity: 1;
+  visibility: visible;
+  transition: all ease-in-out opacity 1s;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
 }

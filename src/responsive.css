@@ -41,11 +41,11 @@
     font-size: 50%;
   }
   .btn-box {
-    max-width: 60%;
-    margin: 0 auto;
+    justify-content: center;
   }
 
   .nav_list {
+    position: relative;
     flex-direction: column;
     position: fixed;
     top: 0;
@@ -60,6 +60,7 @@
     backdrop-filter: blur(10px);
     z-index: 10;
     opacity: 0;
+    border-top-right-radius: 10px;
     transform: translateX(-100%);
     transition: transform 1s ease-in-out, opacity 1s ease-in-out;
   }
@@ -76,11 +77,14 @@
   }
   .nav_mobile .close {
     display: block;
-    position: fixed;
-    top: 3rem;
-    right: 4rem;
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    opacity: 1;
+    visibility: visible;
     transition: transform 1s ease-in-out, opacity 1s ease-in-out;
     z-index: 10;
+    transform: translate(50%, -5%);
   }
   .hero-section {
     text-align: center;
@@ -126,10 +130,7 @@
   .grid-cols-3 {
     grid-template-columns: 1fr;
   }
-  .btn-box {
-    max-width: 70%;
-    margin: 0 auto;
-  }
+
   .grid-item,
   .grid-item-list {
     max-width: 80%;
@@ -227,7 +228,6 @@
   }
   .btn-box {
     gap: 2rem;
-    justify-content: center;
     margin-bottom: 3rem;
   }
   .price-cart-price {

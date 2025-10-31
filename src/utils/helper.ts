@@ -1,10 +1,11 @@
-export const toggleModel = (ref: HTMLElement): void => {
-  ref?.classList.toggle("nav_mobile");
+export const openModel = (ref: HTMLElement, overlay: HTMLElement): void => {
+  ref?.classList.add("nav_mobile");
+  overlay?.classList.remove("hidden");
 };
 
-export const closeModel = (ref: HTMLElement): void => {
+export const closeModel = (ref: HTMLElement, overlay: HTMLElement): void => {
   ref?.classList.remove("nav_mobile");
-  console.log(ref);
+  overlay?.classList.add("hidden");
 };
 
 export const links: { to: string; text: string }[] = [

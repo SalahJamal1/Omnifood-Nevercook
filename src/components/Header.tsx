@@ -1,17 +1,28 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoMdMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { links, toggleModel } from "../utils/helper";
+import { closeModel, links, openModel } from "../utils/helper";
 import useHeader from "../hooks/useHeader";
 
 export default function Header() {
   const ref = useRef<HTMLElement>(null);
   const navRef = useRef<HTMLElement>(null);
-  const { show, setShow } = useHeader(ref, navRef);
+  const [overlay, setOverlay] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    setOverlay(document.querySelector(".overlay") as HTMLElement);
+  }, []);
+
+  const { show, setShow } = useHeader(ref, navRef, overlay);
   const onClick = (): void => {
-    setShow(!show);
-    toggleModel(navRef.current!);
+    if (!show) {
+      openModel(navRef.current!, overlay!);
+      setShow(true);
+    } else {
+      closeModel(navRef.current!, overlay!);
+      setShow(false);
+    }
   };
 
   return (
@@ -28,13 +39,12 @@ export default function Header() {
               </a>
             </li>
           ))}
+          <span onClick={onClick}>
+            {show && <IoClose size={24} className="close" />}
+          </span>
         </ul>
         <span onClick={onClick}>
-          {show ? (
-            <IoClose size={24} color="#222" className="close" />
-          ) : (
-            <IoMdMenu size={24} color="#222" className="menu" />
-          )}
+          {!show && <IoMdMenu size={24} color="#222" className="menu" />}
         </span>
       </nav>
     </header>
