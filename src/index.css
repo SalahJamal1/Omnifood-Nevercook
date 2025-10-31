@@ -79,11 +79,14 @@ body {
   }
 }
 
-li:last-child .nav_links {
-  background-color: var(--color-primary);
-  color: #fff;
-  border-radius: 8px;
-  transition: color 0.3s;
+.btn-toolbar {
+  &:link,
+  &:visited {
+    background-color: var(--color-primary);
+    color: #fff;
+    border-radius: 8px;
+    transition: color 0.3s;
+  }
   &:hover,
   &:active {
     background-color: var(--color-primary-shade-1);

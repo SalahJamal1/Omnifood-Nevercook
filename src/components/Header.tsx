@@ -32,9 +32,14 @@ export default function Header() {
       </Link>
       <nav className="nav" ref={navRef}>
         <ul className="nav_list">
-          {links.map((link) => (
+          {links.map((link, i) => (
             <li key={link.to}>
-              <a href={link.to} className="nav_links">
+              <a
+                href={link.to}
+                className={`nav_links ${
+                  i === links.length - 1 && "btn-toolbar"
+                }`}
+              >
                 {link.text}
               </a>
             </li>
