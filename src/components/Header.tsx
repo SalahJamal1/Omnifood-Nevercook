@@ -11,7 +11,7 @@ export default function Header() {
   const { show, setShow } = useHeader(ref, navRef);
   const onClick = (): void => {
     setShow(!show);
-    toggleModel(ref.current!);
+    toggleModel(navRef.current!);
   };
 
   return (

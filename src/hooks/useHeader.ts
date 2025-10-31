@@ -24,9 +24,9 @@ export default function useHeader(
         closeModel(navRef.current);
       }
     };
-    window.addEventListener("keydown", eventListener);
+    window?.addEventListener("keydown", eventListener);
     return () => {
-      window.removeEventListener("keydown", eventListener);
+      window?.removeEventListener("keydown", eventListener);
     };
   }, [navRef]);
 

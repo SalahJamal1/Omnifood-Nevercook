@@ -4,6 +4,7 @@ export const toggleModel = (ref: HTMLElement): void => {
 
 export const closeModel = (ref: HTMLElement): void => {
   ref?.classList.remove("nav_mobile");
+  console.log(ref);
 };
 
 export const links: { to: string; text: string }[] = [
