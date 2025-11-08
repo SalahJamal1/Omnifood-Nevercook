@@ -115,12 +115,14 @@ body {
   letter-spacing: 2px;
   line-height: 1.05;
   font-weight: 600;
+  animation: left 3s ease-in-out;
 }
 .hero-description {
   font-size: 1.8rem;
   font-weight: 300;
   line-height: 1.5;
   margin-bottom: 5.9rem;
+  animation: bottom 3s ease-in-out;
 }
 .btn-box {
   display: flex;
@@ -177,6 +179,7 @@ body {
   width: 5rem;
   margin-left: -1.5rem;
   border: 3px solid var(--color-primary-tint-1);
+  animation: blur 3s ease-in-out;
 }
 .delivered-meals__meal .delivered-meals__img:first-child {
   margin-left: 0;
@@ -190,6 +193,7 @@ body {
 }
 .hero-img {
   width: 100%;
+  animation: blur 3s ease-in-out;
 }
 
 /* Logos Section Styles */
@@ -769,4 +773,48 @@ section {
 .hidden {
   opacity: 0;
   visibility: hidden;
+}
+
+@keyframes blur {
+  0%,
+  100% {
+    filter: blur(10px);
+  }
+  50% {
+    filter: blur(20px);
+  }
+}
+@keyframes left {
+  0% {
+    opacity: 0;
+    background-color: transparent;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 0.3;
+    background-color: transparent;
+    transform: translateX(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bottom {
+  0% {
+    opacity: 0;
+    background-color: transparent;
+
+    transform: translateY(100%);
+  }
+  50% {
+    opacity: 0.3;
+    background-color: transparent;
+    transform: translateY(-30%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
